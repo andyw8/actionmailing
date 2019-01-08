@@ -40,24 +40,13 @@ class WelcomeMailing
 end
 ```
 
-Calling the mailing from the mailer:
-
-```ruby
-class UserMailer < ActionMailer::Base
-  include ActionMailing::Mailer
-
-  # No need to call `mail`, just return a Mailing
-  def welcome(user)
-    WelcomeMailing.new(user)
-  end
-end
-```
-
 Send the mail in the usual way:
 
 ```ruby
-WelcomeMailer.welcome(user).deliver_later
+WelcomeMailing.new(user).deliver_later
 ```
+
+(No `Mailer` class is needed).
 
 ## Development
 
