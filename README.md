@@ -26,9 +26,17 @@ Define a mailing:
 class WelcomeMailing
   include ActionMailing::Mailing
 
-  to "to@example.com"
-  from "from@example.com"
-  subject "Welcome #{user.name}"
+  def
+    "to@example.com"
+  end
+  
+  def from
+    "from@example.com"
+  end
+  
+  def subject
+    "Welcome #{user.name}"
+  end
 
   def initialize(user)
     @user = user
