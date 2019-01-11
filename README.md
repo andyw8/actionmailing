@@ -20,26 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-Define a mailing:
+Define a mailing class:
 
 ```ruby
 class WelcomeMailing
-  include ActionMailing::Mailing
+  def initialize(user)
+    @user = user
+  end
 
-  def
+  def to
     "to@example.com"
   end
-  
+
   def from
     "from@example.com"
   end
-  
+
   def subject
     "Welcome #{user.name}"
-  end
-
-  def initialize(user)
-    @user = user
   end
 
   private

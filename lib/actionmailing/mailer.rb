@@ -13,7 +13,7 @@ module ActionMailing
       mailing = yield
       return unless mailing.is_a?(ActionMailing::Mailing)
 
-      attachments = mailing.attachments
+      attachments = mailing.attachments if mailing.respond_to?(:attachments)
 
       mail(
         to: mailing.to,
