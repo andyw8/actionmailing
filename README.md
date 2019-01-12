@@ -20,26 +20,24 @@ Or install it yourself as:
 
 ## Usage
 
-Define a mailing:
+Define a mailing class:
 
 ```ruby
 class WelcomeMailing
-  include ActionMailing::Mailing
+  def initialize(user)
+    @user = user
+  end
 
-  def
+  def to
     "to@example.com"
   end
-  
+
   def from
     "from@example.com"
   end
-  
+
   def subject
     "Welcome #{user.name}"
-  end
-
-  def initialize(user)
-    @user = user
   end
 
   private
@@ -66,6 +64,12 @@ Send the mail in the usual way:
 ```ruby
 WelcomeMailer.welcome(user).deliver_later
 ```
+
+## How it Works
+
+There isn't any magic in ActionMailing. It doesn't modify any of Rails internal
+behaviour. `ActionMailing::Mailer` simply adds an `around_action` hook to
+call `mail` automatically.
 
 ## Development
 
